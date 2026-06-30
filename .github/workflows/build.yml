@@ -26,11 +26,12 @@ jobs:
       - name: Gradle setup
         uses: ./.github/actions/gradle-setup
 
-      # Runs the shared module's commonTest on the Android host JVM (this project has no jvm()
-      # target, so there is no jvmTest task). If your Gradle reports a different task name, run
-      # `./gradlew :shared:tasks --group=verification` to find it.
+      # Runs the shared module's commonTest on the Android host JVM. This project uses the
+      # com.android.kotlin.multiplatform.library plugin with withHostTest, whose unit-test task is
+      # `testAndroidHostTest` (not the legacy `testDebugUnitTest`, and there is no `jvmTest` since
+      # there is no jvm() target).
       - name: Run unit tests
-        run: ./gradlew :shared:testDebugUnitTest
+        run: ./gradlew :shared:testAndroidHostTest
 
       - name: Upload test reports
         if: ${{ always() }}
