@@ -1,0 +1,113 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+# Cancel superseded runs on the same ref to save runner minutes.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096M -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.caching=true"
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Gradle setup
+        uses: ./.github/actions/gradle-setup
+
+      # Runs the shared module's commonTest on the Android host JVM (this project has no jvm()
+      # target, so there is no jvmTest task). If your Gradle reports a different task name, run
+      # `./gradlew :shared:tasks --group=verification` to find it.
+      - name: Run unit tests
+        run: ./gradlew :shared:testDebugUnitTest
+
+      - name: Upload test reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: "**/build/reports/tests/"
+          if-no-files-found: ignore
+
+  build-android:
+    name: Build Android
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Gradle setup
+        uses: ./.github/actions/gradle-setup
+
+      - name: Build Android debug APK
+        run: ./gradlew :androidApp:assembleDebug
+
+      - name: Upload Android debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: androidApp/build/outputs/apk/debug/*.apk
+
+  build-web:
+    name: Build Web (Wasm)
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Gradle setup
+        uses: ./.github/actions/gradle-setup
+
+      - name: Build Wasm distribution
+        run: ./gradlew :webApp:wasmJsBrowserDistribution
+
+      - name: Upload web distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-wasm
+          path: webApp/build/dist/wasmJs/productionExecutable/*
+          if-no-files-found: warn
+
+  build-ios:
+    name: Build iOS simulator app
+    runs-on: macos-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Gradle setup
+        uses: ./.github/actions/gradle-setup
+
+      # Targets the iOS Simulator so no code-signing is required. The Xcode project's
+      # "Compile Kotlin Framework" build phase builds the shared KMP framework first.
+      - name: Build iOS simulator app
+        run: |
+          xcodebuild build \
+          -project iosApp/iosApp.xcodeproj \
+          -configuration Debug \
+          -scheme iosApp \
+          -sdk iphonesimulator \
+          -destination 'generic/platform=iOS Simulator' \
+          -derivedDataPath ./build \
+          -verbose
+
+      - name: Upload app folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: iphonesimulator-app
+          path: build/Build/Products/Debug-iphonesimulator/*
+          if-no-files-found: warn
