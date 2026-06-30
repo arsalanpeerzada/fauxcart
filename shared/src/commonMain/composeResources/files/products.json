@@ -1,0 +1,22 @@
+[
+  { "id": "frag_001", "name": "Midnight Oud Extrait", "price": 245.00, "description": "A commanding blend of aged agarwood, dark leather, and spicy saffron. Built for evening wear.", "imageUrl": "https://picsum.photos/seed/frag001/400/400" },
+  { "id": "tech_001", "name": "ErgoMech Pro Keyboard", "price": 320.00, "description": "Split ergonomic mechanical keyboard with tactile switches and a brushed aluminum chassis.", "imageUrl": "https://picsum.photos/seed/tech001/400/400" },
+  { "id": "life_001", "name": "Artisan Espresso Machine", "price": 1250.00, "description": "Dual-boiler espresso maker with pressure profiling and solid walnut accents.", "imageUrl": "https://picsum.photos/seed/life001/400/400" },
+  { "id": "frag_002", "name": "Citrus Ascend", "price": 115.00, "description": "Crisp Italian bergamot cut with ocean salt and a heavy cedarwood base.", "imageUrl": "https://picsum.photos/seed/frag002/400/400" },
+  { "id": "tech_002", "name": "AeroNoise Cancelling Over-Ears", "price": 399.00, "description": "Studio-grade wireless headphones with adaptive ANC and 40-hour battery life.", "imageUrl": "https://picsum.photos/seed/tech002/400/400" },
+  { "id": "life_002", "name": "Full-Grain Leather Messenger", "price": 280.00, "description": "Hand-stitched leather bag designed to hold a 16-inch laptop and daily carry essentials.", "imageUrl": "https://picsum.photos/seed/life002/400/400" },
+  { "id": "frag_003", "name": "Desert Vetiver", "price": 160.00, "description": "Dry, earthy vetiver rooted in sandalwood and black pepper.", "imageUrl": "https://picsum.photos/seed/frag003/400/400" },
+  { "id": "tech_003", "name": "Ultrawide Creator Display", "price": 850.00, "description": "34-inch 5K monitor with 99% DCI-P3 color accuracy for design and engineering.", "imageUrl": "https://picsum.photos/seed/tech003/400/400" },
+  { "id": "life_003", "name": "Minimalist Carbon Wallet", "price": 65.00, "description": "RFID-blocking front pocket wallet forged from aerospace-grade carbon fiber.", "imageUrl": "https://picsum.photos/seed/life003/400/400" },
+  { "id": "frag_004", "name": "Velvet Rose & Smoke", "price": 190.00, "description": "Damascus rose wrapped in tobacco leaf and vanilla absolute.", "imageUrl": "https://picsum.photos/seed/frag004/400/400" },
+  { "id": "tech_004", "name": "Nomad Power Station", "price": 150.00, "description": "25,000mAh magnetic power bank with 65W fast charging for laptops and phones.", "imageUrl": "https://picsum.photos/seed/tech004/400/400" },
+  { "id": "life_004", "name": "Automatic Diver Watch", "price": 750.00, "description": "Surgical steel dive watch with a ceramic bezel and a 72-hour power reserve.", "imageUrl": "https://picsum.photos/seed/life004/400/400" },
+  { "id": "frag_005", "name": "Sartorial Noir", "price": 145.00, "description": "A sharp, peppery scent designed to emulate the atmosphere of a bespoke tailor's shop.", "imageUrl": "https://picsum.photos/seed/frag005/400/400" },
+  { "id": "tech_005", "name": "Haptic VR Gloves", "price": 500.00, "description": "Next-gen spatial computing gloves with force-feedback micro-motors.", "imageUrl": "https://picsum.photos/seed/tech005/400/400" },
+  { "id": "life_005", "name": "Matte Black Fountain Pen", "price": 120.00, "description": "Machined brass body with a titanium nib. Includes a 50ml bottle of waterproof ink.", "imageUrl": "https://picsum.photos/seed/life005/400/400" },
+  { "id": "frag_006", "name": "Alpine Frost", "price": 95.00, "description": "An icy burst of peppermint, juniper berry, and white musk.", "imageUrl": "https://picsum.photos/seed/frag006/400/400" },
+  { "id": "tech_006", "name": "Smart Posture Chair", "price": 950.00, "description": "Mesh office chair with built-in sensors that adjust lumbar support dynamically.", "imageUrl": "https://picsum.photos/seed/tech006/400/400" },
+  { "id": "life_006", "name": "Cast Iron Dutch Oven", "price": 210.00, "description": "Enamel-coated 6-quart pot. Perfect for sourdough baking and slow roasts.", "imageUrl": "https://picsum.photos/seed/life006/400/400" },
+  { "id": "frag_007", "name": "Amber Resonance", "price": 215.00, "description": "A glowing, warm fragrance featuring labdanum, benzoin, and a touch of cinnamon.", "imageUrl": "https://picsum.photos/seed/frag007/400/400" },
+  { "id": "tech_007", "name": "Portable SSD 4TB", "price": 350.00, "description": "Rugged, water-resistant solid state drive with read speeds up to 2000MB/s.", "imageUrl": "https://picsum.photos/seed/tech007/400/400" }
+]
